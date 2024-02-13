@@ -26,8 +26,19 @@ describe('Escrow', () => {
        seller.address,
        inspector.address,
        lender.address
-          )
-  
+        )
+
+    //Approve property
+        transaction = await realEstate.connect(seller).approve(escrow.address, 1)
+        await transaction.wait()
+
+        //List property
+        transaction = await escrow.connect(seller).list(1)
+        await transaction.wait()
+        
+        
+
+        
     })
 
     describe('Deployment', () => {
