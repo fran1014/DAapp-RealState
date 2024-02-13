@@ -10,6 +10,8 @@ describe('Escrow', () => {
     let realEstate, escrow
 
     beforeEach(async () => {
+    //Setup accounts
+    [buyer, seller, inspector, lender] = await ethers.getSigners()
     //Deploy Real Estate
     const RealEstate = await ethers.getContractFactory('RealEstate')
     realEstate = await RealEstate.deploy()
@@ -50,14 +52,14 @@ describe('Escrow', () => {
     })
     })
 
-
-    it('saves the addresses', async () => {
-
-        //Setup accounts
-        [buyer, seller, inspector, lender] = await ethers.getSigners()
-      
-
+    describe('Listing', () => {
+        it('Updates ownership', async () => {
+        expect(await realEstate.ownerOf(1)).to.be.equal(escrow.address)   
         
+     })
+    
+      
     })
+
 
 })

@@ -26,4 +26,9 @@ constructor (
         inspector = _inspector;
         lender = _lender;
     }   
+
+ function list (uint256 _nftID) public {
+    IERC721(nftAddress).transferFrom(msg.sender, address(this), _nftID);
+
+ }   
 }
