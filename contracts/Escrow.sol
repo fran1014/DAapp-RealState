@@ -26,5 +26,4 @@ constructor (
         inspector = _inspector;
         lender = _lender;
     }   
-
 }
