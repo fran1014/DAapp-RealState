@@ -7,6 +7,13 @@
 const hre = require("hardhat");
 
 async function main() {
+  //Set up accounts
+  [buyer, seller, inspector, lender] = await ethers.getSigners()
+  
+  //Deploy Real State
+  const RealState = await ethers.getContractFactory('RealEstate')
+  const realEstate = await RealEstate.deploy()
+  await realEstate.deployed()
 
 }
 
