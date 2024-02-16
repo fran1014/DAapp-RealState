@@ -54,35 +54,39 @@ function App() {
         method: 'eth_requestAccounts',
       });
       const account = ethers.utils.getAddress(accounts[0]);
+      setAccount(account);
     });
   };
 
-  useState(() => {
+  useEffect(() => {
     loadBlockchainData();
+    console.log(loadBlockchainData);
   }, []);
 
   return (
     <div>
+      <Navigation account={account} setAccount={setAccount} />
+      <Search />
       <div className="cards__section">
-        <Navigation account={account} setAccount={setAccount} />
-        <Search />
         <h3>Homes for you</h3>
 
         <hr />
         <div className="cards">
-          <div className="card">
-            <div className="card__image">
-              <img src="" alt="Home" />
+          {homes.map((home, index) => (
+            <div className="card" key={index}>
+              <div className="card__image">
+                <img src="" alt="Home" />
+              </div>
+              <div className="card__info">
+                <h4>1 ETH</h4>
+                <p>
+                  <strong>1</strong> bds |<strong>2</strong> ba |
+                  <strong>3</strong> sqft
+                </p>
+                <p>1234 Elm St</p>
+              </div>
             </div>
-            <div className="card__info">
-              <h4>1 ETH</h4>
-              <p>
-                <strong>1</strong> bds |<strong>2</strong> ba |
-                <strong>3</strong> sqft
-              </p>
-              <p>1234 Elm St</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
